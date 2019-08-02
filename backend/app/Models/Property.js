@@ -21,11 +21,11 @@ class Property extends Model {
   }
 
   user () {
-    this.belongsTo('App/Models/User')
+    return this.belongsTo('App/Models/User')
   }
 
-  image () {
-    this.hasMany('App/Models/Image')
+  images () {
+    return this.hasMany('App/Models/Image')
   }
 }
 
