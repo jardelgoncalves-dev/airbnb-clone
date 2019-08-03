@@ -21,7 +21,7 @@ class SignUp extends Component {
     } else {
       try {
         await api.post("/users", { username, email, password })
-        this.props.history.push('/app')
+        this.props.history.push('/')
       } catch (error) {
         console.log(error.message)
         this.setState({ error: "Ocorreu um erro ao cadastrar o usuário" })
