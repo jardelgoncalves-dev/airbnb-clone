@@ -1,7 +1,6 @@
 import React from "react";
 import { Marker } from "react-map-gl";
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
 
 import { Pin } from "./styles";
 
@@ -19,21 +18,10 @@ const Properties = ({ properties }) =>
       latitude={ parseFloat(property.latitude) }
     >
       <Pin>
-        <Link to="">{intlMonetary.format(property.price)}</Link>
+        <Link to="">{intlMonetary.format(parseFloat(property.price))}</Link>
       </Pin>
     </Marker>
   ));
 
-Properties.propTypes = {
-  properties: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number,
-      title: PropTypes.string,
-      price: PropTypes.number,
-      longitude: PropTypes.number,
-      latitude: PropTypes.number
-    })
-  ).isRequired
-};
 
 export default Properties;
