@@ -9,6 +9,8 @@ import api from "../../services/api";
 import { logout } from "../../services/auth";
 import Button from "./components/Button";
 import Properties from "./components/Properties";
+import { ModalRoute } from "react-router-modal";
+import AddProperty from "../AddProperty";
 
 
 
@@ -106,7 +108,6 @@ class Map extends Component {
       const response = await api.get("/properties", {
         params: { latitude, longitude }
       });
-      console.log(response.data)
       this.setState({ properties: response.data })
     } catch (err) {
       console.log(err);
@@ -131,6 +132,11 @@ class Map extends Component {
       </MapGL>
       {this.renderActions()}
       {this.renderButtonAdd()}
+      <ModalRoute
+        path={`${match.url}/properties/add`}
+        parentPath={match.url}
+        component={AddProperty}
+      />
     </Fragment>
   );
   }
