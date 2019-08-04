@@ -10,7 +10,7 @@ const intlMonetary = new Intl.NumberFormat("pt-BR", {
   minimumFractionDigits: 2
 });
 
-const Properties = ({ properties }) =>
+const Properties = ({ properties, match }) =>
   properties.map(property => (
     <Marker
       key={property.id}
@@ -18,7 +18,9 @@ const Properties = ({ properties }) =>
       latitude={ parseFloat(property.latitude) }
     >
       <Pin>
-        <Link to="">{intlMonetary.format(parseFloat(property.price))}</Link>
+      <Link to={`${match.url}/property/${property.id}`}>
+        {intlMonetary.format(parseFloat(property.price))}
+      </Link>
       </Pin>
     </Marker>
   ));
